@@ -59,7 +59,13 @@
         <activity android:name=".SignupActivity" />
         <!-- <activity android:name=".LauncherActivity"></activity> -->
         <activity android:name=".Config" />
-        <activity android:name=".PengukuranActivity"></activity>
+        <activity android:name=".PengukuranActivity" />
+        <activity android:name=".model.UserGuide" />
+        <activity
+            android:name=".model.Cara_aplikasi"
+            android:label="@string/title_activity_cara_aplikasi"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".model.Cara_sensor"></activity>
     </application>
 
 </manifest>

@@ -34,7 +34,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import com.example.afip.cobalist.model.PengukuranActivity2;
+
 import com.example.afip.cobalist.model.Percobaan;
 
 import butterknife.ButterKnife;
@@ -55,22 +55,12 @@ public class ItemTwoFragment extends Fragment implements Spinner.OnItemSelectedL
 
     private Context context;
     private ArrayList<String> nama_sungai;
-    private String[] germanFeminine = {
-            "Karin",
-            "Ingrid",
-            "Helga",
-            "Renate",
-            "Elke",
-            "Ursula",
-            "Erika",
-            "Christa",
-            "Gisela",
-            "Monika"
-    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
     }
 
     @Override
@@ -91,7 +81,7 @@ public class ItemTwoFragment extends Fragment implements Spinner.OnItemSelectedL
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PengukuranActivity2.class);
+                Intent intent = new Intent(getActivity(), PengukuranActivity.class);
                 startActivity(intent);
             }
         });
@@ -99,6 +89,9 @@ public class ItemTwoFragment extends Fragment implements Spinner.OnItemSelectedL
         return v;
     }
 
+    private void initview(){
+
+    }
 
     public void setSpinner(){
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, nama_sungai);

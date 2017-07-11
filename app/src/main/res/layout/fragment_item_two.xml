@@ -109,7 +109,7 @@
             <Button
                 android:id="@+id/send"
                 android:text="Lakukan Perhitungan"
-                android:backgroundTint="@color/colorGray"
+                android:background="#f26a6a"
                 android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />

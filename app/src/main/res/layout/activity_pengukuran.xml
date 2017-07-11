@@ -1,203 +1,361 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:baselineAligned="false"
-    tools:context="com.example.afip.cobalist.PengukuranActivity">
+    android:fitsSystemWindows="true"
+    tools:context="com.example.afip.cobalist.MainActivity">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="#DDB35F"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/appBarLayout">
 
-        <ImageView
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginLeft="93dp"
-            android:layout_marginTop="7dp"
-            android:src="@drawable/icon"
-            android:id="@+id/imageView4" />
-        <TextView
-            android:text="CENGGO"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:textSize="32dp"
-            android:fontFamily="casual"
-            android:id="@+id/textView10" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </android.support.design.widget.AppBarLayout>
+
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:animateLayoutChanges="true">-->
+    <!--</RelativeLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:background="#ffffff"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:layout_margin="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_weight="1"
+                android:background="#f1bf7d"
+                >
+                <TextView
+                    android:text="Tingkat Kelas Pencemaran Air"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    android:id="@+id/pencemaran_text" />
+                <TextView
+                    android:text="---"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pencemaran_text"
+                    android:textAlignment="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="60dp"
+                    android:textSize="45dp"
+                    android:id="@+id/pencemaran_nilai" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#A9EDAA"
+                >
+
+                <TextView
+                    android:id="@+id/probabilitas_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Probabilitas Tumbuhnya Eceng Gondok"
+                    android:textAlignment="center"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:text=" ---- %"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/probabilitas_text"
+                    android:textSize="45dp"
+                    android:layout_marginLeft="40dp"
+                    android:id="@+id/probabilitas_nilai" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#38a69b">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_left_gray"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/suhuair_gmbr"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/suhuair" />
+
+                    <TextView
+                        android:id="@+id/suhuair_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Suhu Air\n(°C)"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/suhuair_gmbr"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"/>
+
+                    <TextView
+                        android:id="@+id/suhuair_nilai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/suhuair_gmbr"
+                        android:layout_below="@+id/suhuair_text"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="30dp"
+                        android:text="--------"
+                        android:textColor="@color/colorWhite"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_right_gray"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ph_gmbr"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ph" />
+
+                    <TextView
+                        android:id="@+id/ph_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/ph_gmbr"
+                        android:layout_marginLeft="20dp"
+                        android:text="PH\n"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"/>
+
+                    <TextView
+                        android:id="@+id/ph_nilai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/ph_gmbr"
+                        android:layout_below="@+id/ph_text"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="30dp"
+                        android:text="--------"
+                        android:textColor="@color/colorWhite"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_left_gray"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/tds_gmbr"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/tds" />
+
+                    <TextView
+                        android:id="@+id/tds_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tds_gmbr"
+                        android:layout_marginLeft="15dp"
+                        android:text="TDS\n(ppm)"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"/>
+
+                    <TextView
+                        android:id="@+id/tds_nilai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tds_gmbr"
+                        android:layout_below="@+id/tds_text"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="30dp"
+                        android:text="-------"
+                        android:textColor="@color/colorWhite"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_right_gray"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/dhl_gmbr"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/dhl" />
+
+                    <TextView
+                        android:id="@+id/dhl_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DHL \n"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/dhl_gmbr"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"/>
+
+                    <TextView
+                        android:id="@+id/dhl_nilai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/dhl_gmbr"
+                        android:layout_below="@+id/dhl_text"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="30dp"
+                        android:text="--------"
+                        android:textColor="@color/colorWhite"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/sungai_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Sungai : "
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:textColor="#FF38A69B"/>
+
+            <TextView
+                android:id="@+id/sungai_nilai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sungai ---"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:textColor="#FF38A69B"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal : "
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:textColor="#FF38A69B"/>
+
+            <TextView
+                android:id="@+id/date_nilai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DD/MM/YYYY"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:textColor="#FF38A69B"/>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="match_parent"
         android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
         android:background="#DDB35F"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/linearLayout">
-        <LinearLayout
-            android:layout_width="130dp"
-            android:layout_height="match_parent"
-            android:background="#EFC878"
-            android:id="@+id/buttonhome">
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="7dp"
-                android:src="@drawable/home3"
-                android:id="@+id/imageView1" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="130dp"
-            android:layout_height="match_parent"
-            android:background="#EFC880"
-            android:id="@+id/buttonukur">
-            <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
-                app:srcCompat="@android:drawable/ic_notification_overlay"
-                android:layout_below="@+id/textView4"
-                android:layout_toRightOf="@+id/linearLayout2"
-                android:layout_toEndOf="@+id/linearLayout2"
-                android:id="@+id/imageView2" />
+        android:layout_alignParentEnd="true">
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="130dp"
+        <TextView
+            android:id="@+id/submit_pengukuran"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#EFC878"
-            android:id="@+id/buttonhistory">
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="7dp"
-                android:src="@drawable/history"
-                android:id="@+id/imageView3" />
-        </LinearLayout>
+            android:text="Submit"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textAlignment="center" />
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="65dp"
-        android:layout_marginBottom="65dp"
-        android:background="#F9EDAA"
-        android:weightSum="1">
-
-        <RelativeLayout
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_marginLeft="21dp"
-            android:layout_marginTop="20dp"
-            android:background="#A9EDAA"
-            >
-            <TextView
-                android:text="Tingkat Kelas Pencemaran Air"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:textAlignment="center"
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="4dp"
-                android:textSize="20dp"
-                android:id="@+id/textView6" />
-            <TextView
-                android:text="III"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="74dp"
-                android:layout_marginLeft="54dp"
-                android:textSize="65dp"
-                android:id="@+id/textView9" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="20dp"
-            android:background="#A9EDAA"
-            >
-            <TextView
-                android:text="Probabilitas Tumbuhnya Eceng Gondok"
-                android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:textAlignment="center"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="4dp"
-                android:textSize="18dp"
-                android:id="@+id/textView7" />
-            <TextView
-                android:text="76%"
-                android:layout_width="120dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="77dp"
-                android:layout_marginLeft="28dp"
-                android:textSize="55dp"
-                android:id="@+id/textView8" />
-        </RelativeLayout>
-
-        <TextView
-            android:text="Sungai Wonorejo"
-            android:layout_width="180dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="190dp"
-            android:layout_marginLeft="110dp"
-            android:textSize="20dp"
-            android:id="@+id/textView1" />
-
-        <TextView
-            android:text="27 Maret 2017"
-            android:layout_width="180dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="210dp"
-            android:layout_marginLeft="120dp"
-            android:textSize="20dp"
-            android:id="@+id/textView2" />
-
-        <TextView
-            android:text="Nilai pH :"
-            android:layout_width="85dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="240dp"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:id="@+id/textView3" />
-        <TextView
-            android:text="Nilai Suhu :"
-            android:layout_width="110dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="270dp"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:id="@+id/textView4" />
-        <TextView
-            android:text="Nilai EC :"
-            android:layout_width="85dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="300dp"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:id="@+id/textView5" />
-
-
-
-
-    </RelativeLayout>
-
-
-</RelativeLayout>
-
-    <!-- warna icon yaitu 3289C7-->
+</LinearLayout>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.afip.cobalist.model.UserGuide">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/appBarLayout"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="#f1bf7d"
+        >
+        <ImageView
+        android:id="@+id/userguide_gmbr"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/userguide" />
+
+        <TextView
+        android:id="@+id/userguide_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:textSize="30dp"
+        android:layout_toRightOf="@+id/userguide_gmbr"
+        android:text="User Guide" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="#A9EDAA"
+        android:id="@+id/cara_aplikasi"
+        >
+
+        <ImageView
+            android:id="@+id/aplikasi_gmbr"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/smartphone" />
+
+        <TextView
+            android:id="@+id/aplikasi_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textAlignment="center"
+            android:textSize="23dp"
+            android:layout_toRightOf="@+id/aplikasi_gmbr"
+            android:text="Cara memulai pengukuran pada Aplikasi" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"></LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:gravity="center"
+            android:background="#A9EDAA"
+            android:id="@+id/cara_sensor"
+            >
+            <ImageView
+                android:id="@+id/sensor_gmbr"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/river" />
+
+            <TextView
+                android:id="@+id/sensor_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:textSize="23dp"
+                android:textAlignment="center"
+                android:layout_toRightOf="@+id/sensor_gmbr"
+                android:text="Cara memulai pengukuran pada Sensor" />
+    </LinearLayout>
+
+
+
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:background="#f1bf7d"-->
+    <!--&gt;-->
+    <!--<ImageView-->
+    <!--android:id="@+id/userguide_gmbr"-->
+    <!--android:layout_width="60dp"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:layout_marginRight="5dp"-->
+    <!--android:src="@drawable/userguide" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/userguide_text"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:paddingTop="15dp"-->
+    <!--android:textSize="25dp"-->
+    <!--android:layout_toRightOf="@+id/userguide_gmbr"-->
+    <!--android:text="User Guide" />-->
+    <!--</RelativeLayout>-->
+
+    <!--</LinearLayout>-->
+
+
+</LinearLayout>
+
+
