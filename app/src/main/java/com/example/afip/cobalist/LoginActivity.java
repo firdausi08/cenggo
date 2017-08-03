@@ -53,9 +53,11 @@ public class LoginActivity extends AppCompatActivity {
     @InjectView(R.id.btn_login) Button _loginButton;
     @InjectView(R.id.link_signup) TextView _signupLink;
 
-    public static final String LOGIN_URL = "http://192.168.8.101/cenggoserver/login";
+    public static final String LOGIN_URL = "https://cenggo.000webhostapp.com/cenggoserver/login";
     public static final String KEY_USERNAME="username";
     public static final String KEY_PASSWORD="password";
+
+    SharedPrefManager sharedPrefManager ;
 
 
     @Override
@@ -63,6 +65,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
+
+        sharedPrefManager = SharedPrefManager.getmInstance(this);
+
+        if(sharedPrefManager.isLoggedIn()){
+            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            finish();
+        }
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -102,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
         final String password = _passwordText.getText().toString().trim();
 
         // TODO: Implement your own authentication logic here.
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.LOGIN,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -112,6 +121,13 @@ public class LoginActivity extends AppCompatActivity {
                            // if(Util.isRequestSucces(jsonObject)) {
                             progressDialog.dismiss();
                             if (login.equals("true")){
+                                JSONObject jsonData = jsonObject.getJSONObject("data");
+                                int id_user = jsonData.getInt(Config.KEY_USER_ID);
+                                String username = jsonData.getString(Config.KEY_USERNAME_PREF);
+                                String nama_panjang = jsonData.getString(Config.KEY_FULLNAME_PREF);
+                                String jenis_kelamin = jsonData.getString(Config.KEY_JENIS_KELAMIN_PREF);
+                                sharedPrefManager.login(id_user,username,nama_panjang,jenis_kelamin);
+
                                 /*boolean isSuccess = jsonObject.getBoolean("login");
                                 Log.d("SMD", "Masuk onResponse");
                                 if (isSuccess) {
@@ -164,6 +180,7 @@ public class LoginActivity extends AppCompatActivity {
                 Map<String,String> map = new HashMap<String,String>();
                 map.put(KEY_USERNAME,Username);
                 map.put(KEY_PASSWORD,password);
+                map.put(Config.PARAM_TOKEN,sharedPrefManager.getToken());
                 return map;
             }
         };

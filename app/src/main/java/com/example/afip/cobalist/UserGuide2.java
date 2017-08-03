@@ -1,4 +1,21 @@
-package com.example.afip.cobalist.model;
+package com.example.afip.cobalist;
+
+/**
+ * Created by afip on 7/18/2017.
+ */
+
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
+import com.example.afip.cobalist.model.Cara_aplikasi;
+import com.example.afip.cobalist.model.Cara_sensor;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +32,12 @@ import com.example.afip.cobalist.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link User_Guide.OnFragmentInteractionListener} interface
+ * {@link com.example.afip.cobalist.model.User_Guide.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link User_Guide#newInstance} factory method to
+ * Use the {@link com.example.afip.cobalist.model.User_Guide#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class User_Guide extends Fragment {
+public class UserGuide2 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +47,7 @@ public class User_Guide extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private com.example.afip.cobalist.model.User_Guide.OnFragmentInteractionListener mListener;
 
     /**
      * Use this factory method to create a new instance of
@@ -41,8 +58,8 @@ public class User_Guide extends Fragment {
      * @return A new instance of fragment User_Guide.
      */
     // TODO: Rename and change types and number of parameters
-    public static User_Guide newInstance(String param1, String param2) {
-        User_Guide fragment = new User_Guide();
+    public static com.example.afip.cobalist.model.User_Guide newInstance(String param1, String param2) {
+        com.example.afip.cobalist.model.User_Guide fragment = new com.example.afip.cobalist.model.User_Guide();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -92,7 +109,7 @@ public class User_Guide extends Fragment {
         });
 
         return v;
-       // return inflater.inflate(R.layout.fragment_user__guide, container, false);
+        // return inflater.inflate(R.layout.fragment_user__guide, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,8 +122,8 @@ public class User_Guide extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof com.example.afip.cobalist.model.User_Guide.OnFragmentInteractionListener) {
+            mListener = (com.example.afip.cobalist.model.User_Guide.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

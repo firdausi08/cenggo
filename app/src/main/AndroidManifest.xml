@@ -8,6 +8,7 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,6 +17,22 @@
         android:label="Cenggo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+
+        <service
+            android:name=".Service.MyFirebaseInstanceIDService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".Service.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
 
         <!-- <activity -->
         <!-- android:name=".LoginActivity" -->
@@ -36,10 +53,6 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -58,14 +71,19 @@
         <!-- <activity android:name=".LoginActivity" /> -->
         <activity android:name=".SignupActivity" />
         <!-- <activity android:name=".LauncherActivity"></activity> -->
-        <activity android:name=".Config" />
-        <activity android:name=".PengukuranActivity" />
+        <activity android:name=".PercobaanActivity" />
         <activity android:name=".model.UserGuide" />
         <activity
             android:name=".model.Cara_aplikasi"
             android:label="@string/title_activity_cara_aplikasi"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".model.Cara_sensor"></activity>
+        <activity android:name=".model.Cara_sensor" />
+        <activity android:name=".ListPercobaanActivity" />
+        <activity
+            android:name=".InputPercobaanActivity"
+            android:label="@string/title_activity_input_percobaan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TampungResult" />
     </application>
 
 </manifest>

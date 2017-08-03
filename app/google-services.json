@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "900265158580",
+    "firebase_url": "https://cenggoapp-1495696611670.firebaseio.com",
+    "project_id": "cenggoapp-1495696611670",
+    "storage_bucket": "cenggoapp-1495696611670.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900265158580:android:ff8e9c8f608817f6",
+        "android_client_info": {
+          "package_name": "com.example.afip.cobalist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "900265158580-a2ev2dt3ohkekful8svb1bg0gcdgmfga.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSpRXqa231DhjchfPRxdgu-gZfUkkrD80"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

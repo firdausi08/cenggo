@@ -4,7 +4,6 @@ package com.example.afip.cobalist;
  * Created by afip on 5/25/2017.
  */
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -16,12 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -33,45 +33,72 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
-import com.example.afip.cobalist.model.Percobaan;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import at.markushi.ui.CircleButton;
 
-public class ItemTwoFragment extends Fragment implements Spinner.OnItemSelectedListener{
+import static com.google.android.gms.wearable.DataMap.TAG;
 
-    @InjectView(R.id.send) Button startMeasuring;
+public class ItemTwoFragment extends Fragment implements Spinner.OnItemSelectedListener, OnMapReadyCallback{
+
+    GoogleMap googleMap;
+    private Map<String, String> sungai;
 
     public static ItemTwoFragment newInstance() {
         ItemTwoFragment fragment = new ItemTwoFragment();
         return fragment;
     }
 
-    private Spinner spinner;
-    private EditText et_judul;
-    private EditText et_deskripsi;
+    private EditText Title;
+    private EditText Deskripsi;
 
     private Context context;
     private ArrayList<String> nama_sungai;
+    public static final String TITLE="title";
+    public static final String DESKRIPSI = "deskripsi";
+    public static final String ID_SUNGAI = "id_sungai";
+    public static final String LATITUDE = "latitude";
+    public static final String LONGITUDE = "longitude";
+    public static final String ID_USER = "id_user";
+
+    private int selectedSungai;
+
+    SharedPrefManager sharedPrefManager;
+    CircleButton start;
+    Button btnSend;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_item_two, container, false);
         context = v.getContext();
-        spinner = (Spinner) v.findViewById(R.id.spinner);
-        et_judul = (EditText) v.findViewById(R.id.et_judul);
-        et_deskripsi = (EditText) v.findViewById(R.id.et_deskripsi);
-        Button start = (Button)v.findViewById(R.id.send);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+
+        Title = (EditText) v.findViewById(R.id.et_judul);
+        Deskripsi = (EditText) v.findViewById(R.id.et_deskripsi);
+        start = (CircleButton) v.findViewById(R.id.location);
+        btnSend = (Button) v.findViewById(R.id.send);
+        btnSend.setEnabled(false);
+
+
+        sungai = new HashMap<>();
+
+        sharedPrefManager = SharedPrefManager.getmInstance(getActivity());
         /*
         * Mengekseksui class RunBackground()
         * */
@@ -81,8 +108,16 @@ public class ItemTwoFragment extends Fragment implements Spinner.OnItemSelectedL
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PengukuranActivity.class);
-                startActivity(intent);
+//                senddata();
+//                Intent intent = new Intent(getActivity(), PercobaanActivity.class);
+//                startActivity(intent);
+            }
+        });
+
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                senddata();
             }
         });
 
@@ -93,34 +128,11 @@ public class ItemTwoFragment extends Fragment implements Spinner.OnItemSelectedL
 
     }
 
-    public void setSpinner(){
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, nama_sungai);
-        spinner.setAdapter(adapter);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                String nama = nama_sungai.get(position);
-                Toast.makeText(context, nama+" dipilih.", Toast.LENGTH_SHORT).show();
-                /*String title = et_judul.getText().toString();
-                String deskripsi = et_deskripsi.getText().toString();
 
-                Percobaan percobaan = new Percobaan();
-                percobaan.setTitle(title);
-                percobaan.setDeskripsi(deskripsi);
-                percobaan.setId_user(1);
-                percobaan.setId_sungai(position+1);*/
-
-                /*Toast.makeText(view.getContext(), "Selected "+ adapter.getItem(i), Toast.LENGTH_SHORT).show();
-                Toast.makeText(view.getContext(), " Title : "+ et_judul.getText().toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(view.getContext(), "Deskripsi : "+ et_deskripsi.getText().toString(), Toast.LENGTH_SHORT).show();*/
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        this.googleMap = googleMap;
     }
 
 
@@ -152,7 +164,7 @@ public class ItemTwoFragment extends Fragment implements Spinner.OnItemSelectedL
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             progressDialog.dismiss();
-            setSpinner();
+            btnSend.setEnabled(true);
             /*if (s.equals("true")) {
             } else {
                 Toast.makeText(context, "Error...", Toast.LENGTH_SHORT).show();
@@ -177,6 +189,9 @@ public class ItemTwoFragment extends Fragment implements Spinner.OnItemSelectedL
                                     jsonObject = jsonArray.getJSONObject(i);
                                     String id = jsonObject.getString("id_sungai");
                                     String nama = jsonObject.getString("nama_sungai");
+
+                                    sungai.put(id,nama);
+
 
                                     Log.i("Item-Two-Fragment", "Data sungai ke-"+i+" id_sungai -> "+id+" nama_sungai -> "+nama);
                                     nama_sungai.add(nama);
@@ -218,7 +233,6 @@ public class ItemTwoFragment extends Fragment implements Spinner.OnItemSelectedL
                                 jsonObject = jsonArray.getJSONObject(i);
                                 String id_sungai = jsonObject.getString("id_sungai");
                                 String nama_sungai = jsonObject.getString("nama_sungai");
-
                                 /*
                                 * Masukkan nama sungai ke dalam array nama_sungai
                                 * */
@@ -253,4 +267,73 @@ public class ItemTwoFragment extends Fragment implements Spinner.OnItemSelectedL
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    public void senddata() {
+        Log.d(TAG, "Send Data");
+
+        final String title = Title.getText().toString().trim();
+        final String deskripsi = Deskripsi.getText().toString().trim();
+        LatLng latLng = googleMap.getCameraPosition().target;
+        final String latitude = ""+latLng.latitude;
+        final String longitude = ""+latLng.longitude;
+
+//
+//       // final String id_sungai = Id_sungai.getText().toString().trim();
+//
+//        // TODO: Implement your own authentication logic here.
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.ISIDATA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d(TAG, "respon isidata");
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String isidata = jsonObject.getString("isidata");
+                            // if(Util.isRequestSucces(jsonObject)) {
+                           // progressDialog.dismiss();
+                            if (isidata.equals("true")) {
+                                Toast.makeText(getActivity(), "Your data save sucessfully", Toast.LENGTH_LONG).show();
+                                Intent in = new Intent(getActivity(), PercobaanActivity.class);
+                           //     Log.d(TAG, "Login3");
+                                getActivity().startActivity(in);
+                            } else {
+                                Toast.makeText(getActivity(), "What's Happening ??", Toast.LENGTH_LONG).show();
+                                Intent in = new Intent(getActivity(), PercobaanActivity.class);
+                                //     Log.d(TAG, "Login3");
+                                getActivity().startActivity(in);
+
+                            }
+                        } catch (JSONException e) {
+                           // progressDialog.dismiss();
+                            Toast.makeText(getContext(), "There's some issues, please try again", Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<String, String>();
+                map.put(TITLE, title);
+                map.put(DESKRIPSI, deskripsi);
+                map.put(ID_SUNGAI, ""+selectedSungai);
+                map.put(ID_USER, ""+sharedPrefManager.getUserId());
+                map.put(LATITUDE, latitude);
+                map.put(LONGITUDE, longitude);
+                return map;
+            }
+        };
+//        Creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+
+        //Adding request to the queue
+        requestQueue.add(stringRequest);
+    }
+
 }

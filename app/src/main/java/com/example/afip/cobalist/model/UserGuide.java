@@ -3,17 +3,12 @@ package com.example.afip.cobalist.model;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 
-import com.example.afip.cobalist.ItemTwoFragment;
-import com.example.afip.cobalist.PengukuranActivity;
 import com.example.afip.cobalist.R;
 
 import butterknife.InjectView;

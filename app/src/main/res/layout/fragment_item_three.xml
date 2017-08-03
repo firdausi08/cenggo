@@ -28,70 +28,22 @@
         </android.support.design.widget.AppBarLayout>
 
         <!--  ListRow Left sied Thumbnail image -->
-        <LinearLayout android:id="@+id/thumbnail"
-            android:layout_width="wrap_content"
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerPengukuran"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?actionBarSize"
+            android:layout_above="@+id/button_pengkuran"></android.support.v7.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/button_pengkuran"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:layout_below="@id/appbar1"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/image_bg"
-            android:layout_marginRight="5dip">
+            android:layout_alignParentBottom="true"
+            android:background="#7ff5c2"
+            android:text="Mulai pengkuran baru"/>
 
-            <ImageView
-                android:id="@+id/list_image"
-                android:layout_width="50dip"
-                android:layout_height="50dip"
-                android:src="@drawable/map"/>
-
-        </LinearLayout>
-
-        <!-- Title Of Song-->
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/thumbnail"
-            android:layout_toRightOf="@+id/thumbnail"
-            android:text="Rihanna Love the way lie"
-            android:textColor="#040404"
-            android:typeface="sans"
-            android:textSize="15dip"
-            android:textStyle="bold"/>
-
-        <!-- Artist Name -->
-        <TextView
-            android:id="@+id/artist"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/title"
-            android:textColor="#343434"
-            android:textSize="10dip"
-            android:layout_marginTop="1dip"
-            android:layout_toRightOf="@+id/thumbnail"
-            android:text="Just gona stand there and ..." />
-
-        <!-- Rightend Duration -->
-        <TextView
-            android:id="@+id/duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@id/title"
-            android:gravity="right"
-            android:text="5:45"
-            android:layout_marginRight="5dip"
-            android:textSize="10dip"
-            android:textColor="#10bcc9"
-            android:textStyle="bold"/>
-
-        <!-- Rightend Arrow -->
-        <ImageView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"/>
-
-        <!--<LinearLayout-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
         <!--android:layout_marginTop="?actionBarSize">-->

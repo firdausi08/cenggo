@@ -5,10 +5,6 @@
         android:icon="@drawable/homeputih"
         android:title="Home"/>
     <item
-        android:id="@+id/action_item2"
-        android:icon="@android:drawable/ic_notification_overlay"
-        android:title="Measure"/>
-    <item
         android:id="@+id/action_item3"
         android:icon="@drawable/historyputih"
         android:title="History"/>

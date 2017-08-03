@@ -122,6 +122,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_input_percobaan">InputPercobaanActivity</string>
+    <string name="title_activity_tes">Tes</string>
+    <string name="title_activity_tes_scroll">TesScroll</string>
 
 
 </resources>

@@ -1,18 +1,38 @@
 package com.example.afip.cobalist;
 
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.example.afip.cobalist.model.SingleShotLocationProvider;
+import com.google.android.gms.instantapps.PackageManagerWrapper;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.data.kml.KmlContainer;
+import com.google.maps.android.data.kml.KmlLayer;
+
+import android.Manifest;
+
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import static com.example.afip.cobalist.R.id.location;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private KmlLayer layer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +62,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //KmlLayer layer = new KmlLayer(getMap(), R.raw.kmlFile, getApplicationContext());
+        InputStream kmlInputStream = getResources().openRawResource(getResources().getIdentifier("sungai","raw",getPackageName()));
+        try {
+            layer = new KmlLayer(mMap,kmlInputStream,getApplicationContext());
+            layer.addLayerToMap();
+
+
+            Iterable containers = layer.getContainers();
+            accessContainers(containers);
+
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public void accessContainers(Iterable<KmlContainer> containers) {
+        for (KmlContainer container : containers ) {
+            Log.d("KML", "kml data : "+container.getContainerId());
+            if (container.hasContainers()) {
+                accessContainers(container.getContainers());
+            }
+        }
+    }
+
+
+
 }
