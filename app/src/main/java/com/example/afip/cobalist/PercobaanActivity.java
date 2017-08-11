@@ -53,6 +53,7 @@ public class PercobaanActivity extends AppCompatActivity {
     String address = "";
     String state = "";
     String postalCode ="";
+    String address_sungai = "";
 
 
 
@@ -69,32 +70,27 @@ public class PercobaanActivity extends AppCompatActivity {
 
         percobaan = getIntent().getParcelableExtra("percobaan");
         nama_sungai = getIntent().getStringExtra("nama_sungai");
-        latitude = getIntent().getStringExtra("latitude");
-        longitude = getIntent().getStringExtra("longitude");
+        latitude = percobaan.getLatitude();
+        longitude = percobaan.getLongitude();
 
         //   Geocoder geocoder;
+
         List<Address> addresses;
         Geocoder geocoder = new Geocoder(PercobaanActivity.this, Locale.getDefault());
-        Double latitude = Double.valueOf(getIntent().getStringExtra("latitude"));
-        Double longitude = Double.valueOf(getIntent().getStringExtra("longitude"));
+
 
 
         try {
-            addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
 
-            addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-            addresses.get(0).getLocality();
-            addresses.get(0).getAdminArea();
-            addresses.get(0).getCountryName();
-            addresses.get(0).getPostalCode();
+            addresses = geocoder.getFromLocation(Double.valueOf(latitude), Double.valueOf(longitude), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
 
+            // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
 
+            lokasi =  addresses.get(0).getAddressLine(0) + " ";
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        String lokasi = ""+address+","+city+","+state+","+country+","+postalCode;
 
         textSuhuAir = (TextView) findViewById(R.id.suhuair_nilai);
         textPH = (TextView) findViewById(R.id.ph_nilai);
@@ -116,8 +112,6 @@ public class PercobaanActivity extends AppCompatActivity {
         textPH.setText(""+percobaan.getPh());
         textSungai.setText(""+nama_sungai);
         textProbabilitas.setText(""+percobaan.getProbabilitas());
-        textLongitude.setText(""+percobaan.getLongitude());
-        textLatitude.setText(""+percobaan.getLatitude());
 
         textAddress.setText(""+lokasi);
     }

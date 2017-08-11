@@ -1,6 +1,7 @@
 package com.example.afip.cobalist;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -95,6 +96,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame_layout,new UserGuide2()).commit();
         } else if (id == R.id.nav_gallery) {
+            Log.d("TAG","enter nav gallery");
+            Intent newAct = new Intent(getApplicationContext(), aboutus.class);
+            startActivity(newAct);
 
         } else if (id == R.id.nav_slideshow) {
 

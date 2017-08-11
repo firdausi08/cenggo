@@ -8,16 +8,15 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo1"
         android:label="Cenggo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-
         <service
             android:name=".Service.MyFirebaseInstanceIDService"
             android:exported="false">
@@ -32,7 +31,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
 
         <!-- <activity -->
         <!-- android:name=".LoginActivity" -->
@@ -84,6 +82,8 @@
             android:label="@string/title_activity_input_percobaan"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TampungResult" />
+        <activity android:name=".aboutus" />
+        <activity android:name=".GrafikActivity"></activity>
     </application>
 
 </manifest>

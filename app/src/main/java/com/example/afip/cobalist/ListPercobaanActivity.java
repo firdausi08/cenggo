@@ -30,6 +30,7 @@ public class ListPercobaanActivity extends AppCompatActivity {
     private String nama_sungai;
     private Button button;
     private FloatingActionButton fab;
+    private FloatingActionButton fab2;
     private int id_pengukuran;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ public class ListPercobaanActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
      //   button = (Button) findViewById(R.id.fab);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +71,15 @@ public class ListPercobaanActivity extends AppCompatActivity {
                 startActivityForResult(intent,45);
             }
         });
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListPercobaanActivity.this,GrafikActivity.class);
+                intent.putExtra("id pengukuran", id_pengukuran);
+                startActivityForResult(intent,45);
+            }
+        });
+
 //        button.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
