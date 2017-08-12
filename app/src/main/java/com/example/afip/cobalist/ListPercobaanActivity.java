@@ -75,7 +75,7 @@ public class ListPercobaanActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListPercobaanActivity.this,GrafikActivity.class);
-                intent.putExtra("id pengukuran", id_pengukuran);
+                intent.putParcelableArrayListExtra("Percobaan", listPercobaan );
                 startActivityForResult(intent,45);
             }
         });
